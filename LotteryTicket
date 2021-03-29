@@ -1,0 +1,65 @@
+/*
+class LotteryTicket
+
+*/
+
+
+abstract class LotteryTicket {
+
+//static variables:
+	public static int nextTicketNumber = 100000;
+
+//instance variables:
+	int ticketNumber; //stores 6-digit ID number
+	int [] picks; //an array that stores the numbers picked for this LotteryTicket
+	
+//Constructor
+	public LotteryTicket(int []picks){
+		this.picks = picks;
+		ticketNumber = nextTicketNumber;
+		nextTicketNumber++;
+	}
+
+	public int getTicketNumber(){
+		return ticketNumber;
+	}
+	
+	//creates and returns a copy of the picks array:
+	public int [] getPicks(){
+		int index = picks.length;		
+		int [] picksCopy;
+		
+		picksCopy = new int [index];
+		
+		for(int i =0;i<picks.length;i++){
+			picksCopy[i] = picks[i];
+		}
+		
+		return picksCopy;
+	}
+	
+	//toString:
+	public String toString(){
+		String lotteryTicketString;
+		
+		lotteryTicketString = "Ticket number: " + ticketNumber + "Picks: " ;
+		printPicks();
+		return lotteryTicketString;
+	}
+	
+	public void printPicks(){
+		int counter = 0;
+		
+		for(int i= 0; i < picks.length; i++){
+			System.out.print(picks[i] + " ");
+			counter++;
+				if(counter % 5 == 0){
+					System.out.println(" ");
+				}
+		}
+	}
+			
+			
+		
+			
+}//end of class
